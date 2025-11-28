@@ -7,13 +7,13 @@ const Navbar = () => {
     return (
         <nav className="fixed z-40 top-0 left-0 right-0 bg-[#FAFAF9]/80 backdrop-blur-md border-b border-stone-200/50 overflow-hidden">
             {/* Particle Background Effect */}
-            <ParticleBackground className="opacity-40" />
+            <ParticleBackground className="" />
 
             <div className="flex h-20 max-w-[90rem] mx-auto px-6 items-center justify-between relative z-10">
-                <a href="#" className="flex items-center gap-2 group hoverable-element">
-                    {/* Abstract Logo */}
-                    <div className="w-8 h-8 relative flex items-center justify-center">
-                        <AnimatedLogo width={40} height={40} color="#1c1917" className="w-full h-full" />
+                <a href="#" className="flex items-center gap-0.5 group hoverable-element">
+                    {/* Animated Paper Plane Logo */}
+                    <div className="w-6 h-6 relative flex items-center justify-center text-stone-900">
+                        <AnimatedLogo className="w-full h-full" />
                     </div>
                     <span className="font-display font-bold tracking-tighter text-lg uppercase text-stone-900 font-manrope">
                         PlanePaper

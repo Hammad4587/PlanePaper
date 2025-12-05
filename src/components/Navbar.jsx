@@ -1,6 +1,5 @@
 import React from 'react';
 import { Calendar } from 'lucide-react';
-import { AnimatedLogo } from './AnimatedLogo';
 import ParticleBackground from './ParticleBackground';
 
 const Navbar = () => {
@@ -10,14 +9,9 @@ const Navbar = () => {
             <ParticleBackground className="" />
 
             <div className="flex h-20 max-w-[90rem] mx-auto px-6 items-center justify-between relative z-10">
-                <a href="#" className="flex items-center gap-0.5 group hoverable-element">
-                    {/* Animated Paper Plane Logo */}
-                    <div className="w-6 h-6 relative flex items-center justify-center text-stone-900">
-                        <AnimatedLogo className="w-full h-full" />
-                    </div>
-                    <span className="font-display font-bold tracking-tighter text-lg uppercase text-stone-900 font-manrope">
-                        PlanePaper
-                    </span>
+                <a href="#" className="flex items-center group hoverable-element">
+                    {/* PlanePaper Logo */}
+                    <img src="/logo.svg" alt="PlanePaper Logo" className="w-40 h-40" />
                 </a>
 
                 <div className="hidden md:flex items-center gap-8 text-sm font-medium text-stone-500">

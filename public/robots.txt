@@ -1,0 +1,6 @@
+# robots.txt for planepaper.ai
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.planepaper.ai/sitemap.xml

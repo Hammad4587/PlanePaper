@@ -14,14 +14,11 @@ const ParticleBackground = ({ className = '' }) => {
         let animationFrameId;
 
         const init = () => {
-            // Set canvas size to match its display size
             const rect = canvas.getBoundingClientRect();
             w = canvas.width = rect.width;
             h = canvas.height = rect.height;
 
-            // Only create particles if we have valid dimensions
             if (w > 0 && h > 0) {
-                // Create particles based on canvas size
                 const particleCount = Math.floor((w * h) / 18000);
                 particles = Array.from({ length: Math.max(particleCount, 20) }, () => ({
                     x: Math.random() * w,
@@ -45,19 +42,17 @@ const ParticleBackground = ({ className = '' }) => {
 
         const animate = () => {
             ctx.clearRect(0, 0, w, h);
-            ctx.fillStyle = '#1c1917';
+            const isDark = document.documentElement.classList.contains('dark');
+            ctx.fillStyle = isDark ? 'rgba(245, 245, 244, 0.4)' : '#1c1917';
             ctx.globalAlpha = 0.6;
 
             particles.forEach(pt => {
-                // Update position
                 pt.x += pt.vx;
                 pt.y += pt.vy;
 
-                // Bounce off walls
                 if (pt.x < 0 || pt.x > w) pt.vx *= -1;
                 if (pt.y < 0 || pt.y > h) pt.vy *= -1;
 
-                // Mouse repulsion
                 const dx = mouse.x - pt.x;
                 const dy = mouse.y - pt.y;
                 const d = Math.sqrt(dx * dx + dy * dy);
@@ -69,7 +64,6 @@ const ParticleBackground = ({ className = '' }) => {
                     pt.y -= Math.sin(a) * f * 2;
                 }
 
-                // Draw particle
                 ctx.beginPath();
                 ctx.arc(pt.x, pt.y, pt.s, 0, Math.PI * 2);
                 ctx.fill();
@@ -78,17 +72,14 @@ const ParticleBackground = ({ className = '' }) => {
             animationFrameId = requestAnimationFrame(animate);
         };
 
-        // Add event listeners
         window.addEventListener('resize', handleResize);
         window.addEventListener('mousemove', handleMouseMove);
 
-        // Initialize with a slight delay to ensure canvas is mounted
         const timeoutId = setTimeout(() => {
             init();
             animate();
         }, 0);
 
-        // Cleanup
         return () => {
             clearTimeout(timeoutId);
             window.removeEventListener('resize', handleResize);

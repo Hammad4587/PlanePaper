@@ -33,10 +33,17 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Montserrat:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet">
+
+  <script>
+    // Apply dark mode before page renders to prevent flash
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
 </head>
 
 <body
-  class="overflow-x-hidden selection:bg-stone-200 selection:text-black relative bg-[#FAFAF9] text-stone-900 antialiased">
+  class="overflow-x-hidden selection:bg-stone-200 selection:text-black relative dark:bg-stone-950 dark:text-stone-100 transition-colors duration-300">
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>

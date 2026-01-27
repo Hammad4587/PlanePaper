@@ -5,10 +5,9 @@
 @layer base {
   body {
     @apply font-sans;
-    cursor: none; /* Hide default cursor */
+    cursor: none;
   }
-  
-  /* Ensure cursor is hidden on interactive elements too */
+
   a, button, input, textarea, .cursor-pointer {
     cursor: none !important;
   }
@@ -21,14 +20,32 @@
   .font-mono {
     font-family: 'JetBrains Mono', monospace;
   }
-  
-  /* Paper Shadow Utility */
+
   .paper-shadow {
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
   }
   .paper-shadow-hover:hover {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
   }
+  html.dark .paper-shadow-hover:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+  }
+
+  .transform-style-preserve-3d {
+    transform-style: preserve-3d;
+  }
+}
+
+/* CSS Variables for theming */
+:root {
+  --color-accent: #1c1917;
+  --cursor-ring-border: rgba(28, 25, 23, 0.2);
+  --cursor-ring-bg: rgba(28, 25, 23, 0.02);
+}
+html.dark {
+  --color-accent: #f5f5f4;
+  --cursor-ring-border: rgba(245, 245, 244, 0.2);
+  --cursor-ring-bg: rgba(245, 245, 244, 0.05);
 }
 
 /* Custom Cursor Styles */
@@ -43,15 +60,18 @@
 
 .cursor-dot {
   width: 8px; height: 8px;
-  background-color: #1c1917;
+  background-color: var(--color-accent);
   box-shadow: 0 0 15px 2px rgba(28, 25, 23, 0.2);
-  transition: width 0.1s, height 0.1s;
+  transition: width 0.1s, height 0.1s, background-color 0.3s;
+}
+html.dark .cursor-dot {
+  box-shadow: 0 0 15px 2px rgba(255, 255, 255, 0.2);
 }
 
 .cursor-ring {
   width: 32px; height: 32px;
-  border: 1.5px solid rgba(28, 25, 23, 0.2);
-  background-color: rgba(28, 25, 23, 0.02);
+  border: 1.5px solid var(--cursor-ring-border);
+  background-color: var(--cursor-ring-bg);
   transition: left 0.15s ease-out, top 0.15s ease-out, width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s;
 }
 
@@ -59,6 +79,10 @@ body.hovering .cursor-ring {
   width: 50px; height: 50px;
   border-color: rgba(28, 25, 23, 0.5);
   background-color: rgba(28, 25, 23, 0.08);
+}
+html.dark body.hovering .cursor-ring {
+  border-color: rgba(245, 245, 244, 0.5);
+  background-color: rgba(245, 245, 244, 0.08);
 }
 
 body.hovering .cursor-dot {
@@ -76,6 +100,33 @@ body.hovering .cursor-dot {
   z-index: 50;
   opacity: 0.03;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+html.dark .bg-grain {
+  opacity: 0.05;
+  filter: invert(1);
+}
+
+/* Grid pattern dark mode */
+html.dark .bg-grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+/* Selection */
+::selection {
+  background-color: #e7e5e4;
+  color: #000;
+}
+html.dark ::selection {
+  background-color: #44403c;
+  color: #fff;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 /* Button Animation Styles */
@@ -97,6 +148,11 @@ body.hovering .cursor-dot {
   background-color: rgba(0, 0, 0, 0);
   user-select: none;
   border-radius: 8px;
+}
+html.dark .btn-wrapper {
+  --dot-color: #f5f5f4;
+  --line-color: #f5f5f4;
+  --grid-color: #44403c;
 }
 
 .btn-wrapper::after {
@@ -141,12 +197,21 @@ body.hovering .cursor-dot {
   transition: all .2s ease-in-out;
   z-index: 10;
 }
+html.dark .btn-wrapper .btn-inner {
+  background-color: #1c1917;
+  color: #f5f5f4;
+}
 
 .btn-wrapper .btn-inner:hover {
   background-color: #1c1917;
   color: #ffffff;
   transform: scale(1.02);
   border-color: #1c1917;
+}
+html.dark .btn-wrapper .btn-inner:hover {
+  background-color: #f5f5f4;
+  color: #1c1917;
+  border-color: #f5f5f4;
 }
 
 .btn-wrapper .btn-inner:active {

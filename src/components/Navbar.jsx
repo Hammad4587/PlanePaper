@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Calendar } from 'lucide-react';
 import LightLogo from '../assets/Light - Logo.svg';
 import DarkLogo from '../assets/Dark - Logo.svg';
@@ -36,24 +37,24 @@ const Navbar = () => {
     return (
         <nav className="fixed z-40 top-0 left-0 right-0 bg-[#FAFAF9]/80 backdrop-blur-md border-b border-stone-200/50 dark:bg-stone-950/80 dark:border-stone-800">
             <div className="flex h-20 max-w-[90rem] mx-auto px-6 items-center justify-between">
-                <a href="#" className="hoverable-element">
+                <Link to="/" className="hoverable-element">
                     {/* Mobile: full logo */}
                     <img src={LightLogo} alt="PlanePaper" className="block md:hidden dark:hidden h-8" />
                     <img src={DarkLogo} alt="PlanePaper" className="hidden dark:block md:dark:hidden h-8" />
                     {/* Desktop: compact logo */}
                     <img src={LightMobile} alt="PlanePaper" className="hidden md:block dark:hidden h-8" />
                     <img src={DarkMobile} alt="PlanePaper" className="hidden md:dark:block h-8" />
-                </a>
+                </Link>
 
                 {/* Desktop nav links */}
                 <div className="hidden md:flex text-sm font-medium text-stone-500 translate-x-16 gap-x-8 items-center">
-                    <a href="#services" className="transition-colors hoverable-element font-manrope hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100">
+                    <a href="/#services" className="transition-colors hoverable-element font-manrope hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100">
                         Services
                     </a>
-                    <a href="#work" className="transition-colors hoverable-element hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100 font-manrope">
+                    <a href="/#work" className="transition-colors hoverable-element hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100 font-manrope">
                         Blueprint
                     </a>
-                    <a href="#pricing" className="transition-colors hoverable-element font-manrope hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100">
+                    <a href="/#pricing" className="transition-colors hoverable-element font-manrope hover:text-stone-900 dark:text-stone-400 dark:hover:text-stone-100">
                         Pricing
                     </a>
                 </div>
@@ -86,7 +87,7 @@ const Navbar = () => {
                     </button>
 
                     {/* Animated Button */}
-                    <a href="#contact" className="inline-flex btn-wrapper hoverable-element">
+                    <a href="/#contact" className="inline-flex btn-wrapper hoverable-element">
                         <div className="line horizontal top"></div>
                         <div className="line vertical right"></div>
                         <div className="line horizontal bottom"></div>

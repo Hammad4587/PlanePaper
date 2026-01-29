@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
@@ -32,7 +33,7 @@ const Footer = () => {
                     </div>
 
                     <div className="flex flex-col justify-end items-start lg:items-end">
-                        <div className="grid grid-cols-2 gap-x-12 gap-y-4 text-sm mb-12">
+                        <div className="grid grid-cols-3 gap-x-12 gap-y-4 text-sm mb-12">
                             <div>
                                 <div className="font-mono uppercase tracking-widest mb-4 font-manrope text-stone-400 dark:text-stone-500">
                                     Social
@@ -56,14 +57,36 @@ const Footer = () => {
                                 </div>
                                 <ul className="space-y-2">
                                     <li>
-                                        <a href="#services" className="hover:text-stone-500 transition-colors hoverable-element font-manrope text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
+                                        <a href="/#services" className="hover:text-stone-500 transition-colors hoverable-element font-manrope text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
                                             Services
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#work" className="hover:text-stone-500 transition-colors hoverable-element font-manrope text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
+                                        <a href="/#work" className="hover:text-stone-500 transition-colors hoverable-element font-manrope text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
                                             Work
                                         </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div className="font-mono uppercase tracking-widest mb-4 font-manrope text-stone-400 dark:text-stone-500">
+                                    Legal
+                                </div>
+                                <ul className="space-y-2">
+                                    <li>
+                                        <Link to="/terms" className="hover:text-stone-500 transition-colors hoverable-element font-manrope text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
+                                            Terms of Service
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/privacy" className="hover:text-stone-500 transition-colors hoverable-element font-manrope text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
+                                            Privacy Policy
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/refund" className="hover:text-stone-500 transition-colors hoverable-element font-manrope text-stone-900 dark:text-stone-300 dark:hover:text-stone-100">
+                                            Refund Policy
+                                        </Link>
                                     </li>
                                 </ul>
                             </div>
